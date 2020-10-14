@@ -117,6 +117,9 @@ int main() {
     std::cout<<"Unittest_7 ";
     unittest_7();
     std::cout<<"OK"<<std::endl;
+    std::cout<<"Unittest_8 ";
+    unittest_8();
+    std::cout<<"OK"<<std::endl;
     std::cout<<"SUCCESS!"<<std::endl;
     return 0;
 }
