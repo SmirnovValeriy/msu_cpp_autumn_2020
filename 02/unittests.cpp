@@ -8,8 +8,8 @@ void unittest_1() {
     size_t n_strings = 0;
     std::string text = "string 12345 123 123nodigit 987654321 no123digit456 54321";
     
-    parser.set_digit_callback([&n_digits](std::string token){ n_digits++; });
-    parser.set_string_callback([&n_strings](std::string token){ n_strings++; });
+    parser.set_digit_callback([&n_digits](const std::string & token){ n_digits++; });
+    parser.set_string_callback([&n_strings](const std::string & token){ n_strings++; });
     parser.parse(text);
     
     assert(n_digits == 4 and n_strings == 3);
@@ -22,8 +22,8 @@ void unittest_2() {
     size_t n_strings = 0;
     std::string text = "string \t\n \n 12345 123 123nodigit \n \t\t\t 987654321 123456n 54321";
     
-    parser.set_digit_callback([&n_digits](std::string token){ n_digits++; });
-    parser.set_string_callback([&n_strings](std::string token){ n_strings++; });
+    parser.set_digit_callback([&n_digits](const std::string & token){ n_digits++; });
+    parser.set_string_callback([&n_strings](const std::string & token){ n_strings++; });
     parser.parse(text);
     
     assert(n_digits == 4 and n_strings == 3);
@@ -36,8 +36,8 @@ void unittest_3() {
     size_t n_strings = 0;
     std::string text = "string 12345 123nodigit\n";
     
-    parser.set_digit_callback([&n_digits](std::string token){ n_digits++; });
-    parser.set_string_callback([&n_strings](std::string token){ n_strings++; });
+    parser.set_digit_callback([&n_digits](const std::string & token){ n_digits++; });
+    parser.set_string_callback([&n_strings](const std::string & token){ n_strings++; });
     parser.parse(text);
     
     assert(n_digits == 1 and n_strings == 2);
@@ -50,8 +50,8 @@ void unittest_4() {
     size_t n_strings = 0;
     std::string text = "string 12345 123nodigit\n\t\n \n \n \n";
     
-    parser.set_digit_callback([&n_digits](std::string token){ n_digits++; });
-    parser.set_string_callback([&n_strings](std::string token){ n_strings++; });
+    parser.set_digit_callback([&n_digits](const std::string & token){ n_digits++; });
+    parser.set_string_callback([&n_strings](const std::string & token){ n_strings++; });
     parser.parse(text);
     assert(n_digits == 1 and n_strings == 2);
 }
@@ -66,8 +66,8 @@ void unittest_5() {
     std::string text = "string 12345 123nodigit\n\t\n \n \n \n";
     
     parser.set_start_callback([&started](){ started = true; });
-    parser.set_digit_callback([&n_digits](std::string token){ n_digits++; });
-    parser.set_string_callback([&n_strings](std::string token){ n_strings++; });
+    parser.set_digit_callback([&n_digits](const std::string & token){ n_digits++; });
+    parser.set_string_callback([&n_strings](const std::string & token){ n_strings++; });
     parser.set_end_callback([&ended](){ ended = true; });
     parser.parse(text);
     
@@ -85,8 +85,8 @@ void unittest_6() {
     std::string text = "string 12345 123nodigit\n\t\n 1234\n \n123456789 \n";
     
     parser.set_start_callback([&started](){ started = true; });
-    parser.set_digit_callback([&check](std::string token){ check.push_back('1'); });
-    parser.set_string_callback([&check](std::string token){ check.push_back('0'); });
+    parser.set_digit_callback([&check](const std::string & token){ check.push_back('1'); });
+    parser.set_string_callback([&check](const std::string & token){ check.push_back('0'); });
     parser.set_end_callback([&ended](){ ended = true; });
     parser.parse(text);
     
@@ -102,8 +102,8 @@ void unittest_7() {
     std::string text = "string 12345 123nodigit\n\t\n 1234\n \n123456789 \n";
     
     parser.set_start_callback([&started](){ started = true; });
-    parser.set_digit_callback([&check](std::string token){ check+=token; });
-    parser.set_string_callback([&check](std::string token){ check+=token; });
+    parser.set_digit_callback([&check](const std::string & token){ check+=token; });
+    parser.set_string_callback([&check](const std::string & token){ check+=token; });
     parser.set_end_callback([&ended](){ ended = true; });
     parser.parse(text);
     

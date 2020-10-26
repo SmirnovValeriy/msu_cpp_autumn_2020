@@ -5,7 +5,7 @@
 #ifndef allocator_hpp
 #define allocator_hpp
 
-using TokenCallback = std::function<void(std::string token)>;
+using TokenCallback = std::function<void(const std::string & token)>;
 using StartEndCallback = std::function<void()>;
 
 class Parser {
@@ -21,7 +21,7 @@ public:
     void set_digit_callback(TokenCallback digit_cb);
     void set_string_callback(TokenCallback string_cb);
     void set_end_callback(StartEndCallback end_cb);
-    void parse(std::string text);
+    void parse(const std::string & text) const;
 };
 
 #endif
