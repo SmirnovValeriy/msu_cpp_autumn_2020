@@ -24,7 +24,7 @@ void Parser::set_end_callback(StartEndCallback end_cb) {
 	end_callback = end_cb;
 }
 
-void Parser::parse(const std::string & text) const {
+void Parser::parse(const std::string & text) {
 	start_callback();
 
 	std::string token;
@@ -34,25 +34,24 @@ void Parser::parse(const std::string & text) const {
 
 	while(begin_iterator != text.end()) {
 		c = *begin_iterator;
-		if((c != '\t') and (!isspace(c)) and (c != '\n')) {
+		if(!isspace(c)) {
 			token.push_back(c);
 			if(!isdigit(c)) digit = false;
 		}
 		else
-			if(token.size() != 0) {
-				if(digit) digit_callback(token);
-				else string_callback(token);
-				digit = true;
-				token.clear();
-			}
+			token_processing(token, digit);
 		begin_iterator++;
 	}
 	//last token callback
-	if(token.size() != 0) {
-		if(digit) digit_callback(token);
-		else string_callback(token);
-		token.clear();
-	}
+	token_processing(token, digit);
 	end_callback();
+}
+
+void Parser::token_processing(std::string & token, bool & digit) {
+    if(token.size() != 0) {
+		digit ? digit_callback(token) : string_callback(token);
+		token.clear();
+		digit = true;
+    }
 }
 

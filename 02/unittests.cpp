@@ -1,7 +1,7 @@
 #include "Parser.hpp"
 #include <cassert>
 
-//set callbacks for digits and strings as counters
+/* Set callbacks for digits and strings as counters */
 void unittest_1() {
     Parser parser;
     size_t n_digits = 0;
@@ -15,7 +15,7 @@ void unittest_1() {
     assert(n_digits == 4 and n_strings == 3);
 }
 
-//multiple delimiters
+/* Multiple delimiters */
 void unittest_2() {
     Parser parser;
     size_t n_digits = 0;
@@ -29,7 +29,7 @@ void unittest_2() {
     assert(n_digits == 4 and n_strings == 3);
 }
 
-//delimeters at the end
+/* Delimeters at the end */
 void unittest_3() {
     Parser parser;
     size_t n_digits = 0;
@@ -43,7 +43,7 @@ void unittest_3() {
     assert(n_digits == 1 and n_strings == 2);
 }
 
-//multiple delimeters at the end
+/* Multiple delimeters at the end */
 void unittest_4() {
     Parser parser;
     size_t n_digits = 0;
@@ -56,7 +56,7 @@ void unittest_4() {
     assert(n_digits == 1 and n_strings == 2);
 }
 
-//change start and end callbacks
+/* Change start and end callbacks */
 void unittest_5() {
     Parser parser;
     bool started = false;
@@ -74,9 +74,9 @@ void unittest_5() {
     assert(n_digits == 1 and n_strings == 2 and started and ended);
 }
 
-//change digit and string callbacks
-//digit - '1'
-//string - '0'
+/* Change digit and string callbacks 
+      digit - '1'
+      string - '0' */
 void unittest_6() {
     Parser parser;
     bool started = false;
@@ -93,7 +93,7 @@ void unittest_6() {
     assert(check == std::string("01011") and started and ended);
 }
 
-//change digit and string callbacks
+/* Change digit and string callbacks */
 void unittest_7() {
     Parser parser;
     bool started = false;
