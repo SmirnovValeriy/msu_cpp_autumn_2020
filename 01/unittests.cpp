@@ -95,6 +95,16 @@ void unittest_8() {
     assert(ptr_1 == nullptr);
 }
 
+//double call make_allocator() - check offset is reset
+void unittest_9() {
+    Allocator allocator;
+    allocator.make_allocator(2048);
+    char * ptr_1 = allocator.alloc(2048);
+    allocator.make_allocator(2048);
+    char * ptr_2 = allocator.alloc(2048);
+    assert(ptr_2 != nullptr);
+}
+
 int main() {
     std::cout<<"Unittest_1 ";
     unittest_1();
@@ -119,6 +129,9 @@ int main() {
     std::cout<<"OK"<<std::endl;
     std::cout<<"Unittest_8 ";
     unittest_8();
+    std::cout<<"OK"<<std::endl;
+    std::cout<<"Unittest_9 ";
+    unittest_9();
     std::cout<<"OK"<<std::endl;
     std::cout<<"SUCCESS!"<<std::endl;
     return 0;

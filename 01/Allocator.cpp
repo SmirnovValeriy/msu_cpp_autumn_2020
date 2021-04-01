@@ -7,6 +7,7 @@ void Allocator::make_allocator(size_t max_size) {
     if(buffer_size) {
         delete[] buffer_ptr;
         buffer_size = 0;
+        offset = 0;
     }
     buffer_ptr = new char[buffer_size=max_size];
 }
