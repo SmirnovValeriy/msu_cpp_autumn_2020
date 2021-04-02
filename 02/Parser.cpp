@@ -54,3 +54,4 @@ void Parser::token_processing(std::string & token, bool & digit) {
 		digit = true;
     }
 }
+

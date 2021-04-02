@@ -8,3 +8,4 @@ test:
 	./test
 clear:
 	rm -f test
+
