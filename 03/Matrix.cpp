@@ -1,7 +1,7 @@
 #include "Matrix.hpp"
 
 /* Row class methods implementation */
-Row::Row(const size_t max_size, const int64_t init_value): row_size(max_size), data(new int64_t[max_size]) {
+Row::Row(size_t max_size, int64_t init_value): row_size(max_size), data(new int64_t[max_size]) {
     for(size_t i=0; i<max_size; i++) data[i] = init_value;
 }
 
@@ -11,12 +11,12 @@ Row& Row::operator=(const Row &row) {
     return *this;
 }
 
-int64_t& Row::operator[](const size_t i) {
+int64_t& Row::operator[](size_t i) {
     if(i >= row_size) throw std::out_of_range("r[]");
     return data[i];
 }
 
-const int64_t& Row::operator[](const size_t i) const {
+const int64_t& Row::operator[](size_t i) const {
     if(i >= row_size) throw std::out_of_range("r[]");
     return data[i];
 }
@@ -26,7 +26,7 @@ std::ostream& operator<<(std::ostream &out, const Row &row) {
     return out;
 }
 
-Row& Row::operator*=(const int64_t value) {
+Row& Row::operator*=(int64_t value) {
     for(size_t i=0; i<row_size; i++) data[i] *= value;
     return *this;
 }
@@ -54,7 +54,7 @@ Row::~Row() {
 }
 
 /* Matrix class methods implementation */
-Matrix::Matrix(const size_t rows_size, const size_t cols_size, const int64_t init_value): num_rows(rows_size), 
+Matrix::Matrix(size_t rows_size, size_t cols_size, int64_t init_value): num_rows(rows_size), 
                                                                                              num_cols(cols_size), 
                                                                                              data(new Row* [rows_size]) {
     for(size_t i=0; i<rows_size; i++) {
@@ -78,12 +78,12 @@ Matrix& Matrix::operator=(const Matrix& matrix) {
     return *this;
 }
 
-Row& Matrix::operator[](const size_t i) {
+Row& Matrix::operator[](size_t i) {
     if(i >= num_rows) throw std::out_of_range("[]");
     return *(data[i]);
 }
 
-const Row& Matrix::operator[](const size_t i) const {
+const Row& Matrix::operator[](size_t i) const {
     if(i >= num_rows) throw std::out_of_range("[]");
     return *(data[i]);
 }
@@ -93,7 +93,7 @@ std::ostream& operator<<(std::ostream &out, const Matrix &matrix) {
     return out;
 }
 
-Matrix& Matrix::operator*=(const int64_t value) {
+Matrix& Matrix::operator*=(int64_t value) {
     for(size_t i=0; i<num_rows; i++) *(data[i]) *= value;
     return *this;
 }

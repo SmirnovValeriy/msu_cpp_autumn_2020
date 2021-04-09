@@ -1,7 +1,11 @@
-all: 
-	g++ -std=c++17 Matrix.cpp unittests.cpp
+CC=g++
+FLAGS=-std=c++17
+
+all: Matrix.cpp unittests.cpp
+	$(CC) $(FLAGS) Matrix.cpp unittests.cpp -o test
 test:
-	g++ -std=c++17 Matrix.cpp unittests.cpp -o test
+	$(CC) $(FLAGS) Matrix.cpp unittests.cpp -o test
 	./test
-	rm -rf test
+clear:
+	rm -f test
 
