@@ -1,7 +1,7 @@
 #include "BigInt.hpp"
 
 /* BigInt from std::string and equality operator*/
-bool unittest_1() {
+bool BigInt_from_string() {
     try {
         std::string from_1("1234567890");
         std::string from_2("-1234567890");
@@ -16,7 +16,7 @@ bool unittest_1() {
 }
 
 /* BigInt from int64_t */
-bool unittest_2() {
+bool BigInt_from_int64() {
     try {
         int64_t from_1(1234567890);
         int64_t from_2(-1234567890);
@@ -31,7 +31,7 @@ bool unittest_2() {
 }
 
 /* Copying and moving constructors */
-bool unittest_3() {
+bool copying_moving_constructors() {
     try {
         BigInt from_1(1234567890);
         BigInt from_2(-1234567890);
@@ -46,7 +46,7 @@ bool unittest_3() {
 }
 
 /* Copying and moving operators = */
-bool unittest_4() {
+bool assignment_operators() {
     try {
         BigInt from_1(1234567890);
         BigInt from_2(-1234567890);
@@ -61,7 +61,7 @@ bool unittest_4() {
 }
 
 /* Meaningless zeros */
-bool unittest_5() {
+bool meaningless_zeros() {
     try {
         std::string from_1("+0000000000090");
         std::string from_2("-0000090000000");
@@ -76,7 +76,7 @@ bool unittest_5() {
 }
 
 /* Unary minus */
-bool unittest_6() {
+bool unary_minus() {
     try {
         BigInt num_1("1234567890");
         BigInt num_2("-1234567890");
@@ -89,7 +89,7 @@ bool unittest_6() {
 }
 
 /* Adding positive and positive */
-bool unittest_7() {
+bool positive_positive_sum() {
     try {
         BigInt num_1("1234567890");
         BigInt num_2("1234567890");
@@ -102,7 +102,7 @@ bool unittest_7() {
 }
 
 /* Substracting positive and positive */
-bool unittest_8() {
+bool positive_positive_diff() {
     try{
         BigInt num_1("2345678901");
         BigInt num_2("1234567890");
@@ -115,7 +115,7 @@ bool unittest_8() {
 }
 
 /* Adding negative and negative */
-bool unittest_9() {
+bool negative_negative_sum() {
     try {
         BigInt num_1("-1234567890");
         BigInt num_2("-1234567890");
@@ -128,7 +128,7 @@ bool unittest_9() {
 }
 
 /* Substracting negative and negative */
-bool unittest_10() {
+bool negative_negative_diff() {
     try {
         BigInt num_1("-1234567890");
         BigInt num_2("-2345678901");
@@ -141,7 +141,7 @@ bool unittest_10() {
 }
 
 /* Multiplying positive and positive */
-bool unittest_11() {
+bool positive_positive_mul() {
     try {
         BigInt num_1("1234567890");
         BigInt num_2("2345678901");
@@ -155,7 +155,7 @@ bool unittest_11() {
 }
 
 /* Multiplying positive and negative */
-bool unittest_12() {
+bool positive_negative_mul() {
     try {
         BigInt num_1("1234567890");
         BigInt num_2("-2345678901");
@@ -169,7 +169,7 @@ bool unittest_12() {
 }
 
 /* Multiplying negative and negative */
-bool unittest_13() {
+bool negative_negative_mul() {
     try {
         BigInt num_1("-1234567890");
         BigInt num_2("-2345678901");
@@ -183,7 +183,7 @@ bool unittest_13() {
 }
 
 /* Comparison operators */
-bool unittest_14() {
+bool comparison_operators() {
     try {
         BigInt num_1("1234567890");
         BigInt num_2("1234577899");
@@ -199,19 +199,18 @@ bool unittest_14() {
 }
 
 int main() {
-    std::cout<<"Unittest_1 "<<(unittest_1() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_2 "<<(unittest_2() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_3 "<<(unittest_3() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_4 "<<(unittest_4() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_5 "<<(unittest_5() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_6 "<<(unittest_6() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_7 "<<(unittest_7() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_8 "<<(unittest_8() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_9 "<<(unittest_9() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_10 "<<(unittest_10() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_11 "<<(unittest_11() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_12 "<<(unittest_12() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_13 "<<(unittest_13() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_14 "<<(unittest_14() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest BigInt_from_string "<<(BigInt_from_string() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest BigInt_from_int64 "<<(BigInt_from_int64() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest copying_moving_constructors "<<(copying_moving_constructors() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest assignment_operators "<<(assignment_operators() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest meaningless_zeros "<<(meaningless_zeros() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest unary_minus "<<(unary_minus() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest positive_positive_sum "<<(positive_positive_sum() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest positive_positive_diff "<<(positive_positive_diff() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest negative_negative_sum "<<(negative_negative_sum() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest negative_negative_diff "<<(negative_negative_diff() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest positive_positive_mul "<<(positive_positive_mul() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest positive_negative_mul "<<(positive_negative_mul() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest negative_negative_mul "<<(negative_negative_mul() ? "OK" : "ERROR")<<std::endl;
+    std::cout<<"Unittest comparison_operators "<<(comparison_operators() ? "OK" : "ERROR")<<std::endl;
 }
-

@@ -33,7 +33,7 @@ BigInt::BigInt(const std::string &str) {
     data[len] = '\0';
 }
 
-BigInt::BigInt(const int64_t &value) {
+BigInt::BigInt(int64_t value) {
     BigInt to_copy_from(std::to_string(value));
     data = to_copy_from.data;
     len = to_copy_from.len;

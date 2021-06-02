@@ -14,7 +14,7 @@ class BigInt {
 public:
     BigInt();
     BigInt(const std::string &str);
-    BigInt(const int64_t &value);
+    BigInt(int64_t value);
     BigInt(const BigInt &other);
     BigInt(BigInt &&other);
     BigInt& operator=(const BigInt &other);
@@ -37,4 +37,3 @@ public:
 };
 
 #endif
-
