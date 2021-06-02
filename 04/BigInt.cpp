@@ -1,6 +1,6 @@
 #include "BigInt.hpp"
 
-BigInt::BigInt(): len(1), data(new char[len]) {
+BigInt::BigInt(): len(1), data(new char[len+1]) {
     data[0] = '0';
     data[1] = '\0';
 }
@@ -8,7 +8,7 @@ BigInt::BigInt(): len(1), data(new char[len]) {
 BigInt::BigInt(const std::string &str) {
     if(str.size() == 0) {
         len = 1;
-        data = new char[len];
+        data = new char[len+1];
         data[0] = '0';
         data[1] = '\0';
     }
@@ -21,7 +21,7 @@ BigInt::BigInt(const std::string &str) {
         /* Drop meaningless zeros */
         for(; j < str_size - 1 and str[j] == '0'; j++);
         len = str.size() - j + minus;
-        data = new char[len];
+        data = new char[len+1];
         char t;
         if(minus) data[0] = str[0];
         for(size_t i=minus; i<len; i++) {
@@ -43,7 +43,7 @@ BigInt::BigInt(const int64_t &value) {
 
 BigInt::BigInt(const BigInt &other) {
     len = other.len;
-    data = new char[len];
+    data = new char[len+1];
     for(size_t i=0; i<len; i++) data[i] = other.data[i];
     data[len] = '\0';
 }
@@ -58,7 +58,7 @@ BigInt::BigInt(BigInt &&other) {
 BigInt& BigInt::operator=(const BigInt &other) {
     if(this == &other) return *this;
     len = other.len;
-    char * tmp = new char[len];
+    char * tmp = new char[len+1];
     delete[] data;
     data = tmp;
     tmp = nullptr;
@@ -82,7 +82,7 @@ BigInt& BigInt::operator=(BigInt &&other) {
 BigInt BigInt::operator-() const {
     if(data[0] == '0') return *this;
     bool minus = data[0] == '-';
-    char * tmp = new char[len + 1 - 2 * minus];
+    char * tmp = new char[len + 1 - 2 * minus + 1];
     if(!minus) tmp[0] = '-';
     for(size_t i = !minus; i<len + 1 - 2 * minus; i++) tmp[i] = data[i - 1 + 2 * minus];
     tmp[len + 1 - 2 * minus] = '\0';
@@ -142,7 +142,7 @@ bool BigInt::operator<=(const BigInt &other) const {
 }
 
 BigInt add(const char * str1, size_t len1, const char * str2, size_t len2) {
-    char * tmp = new char[len1 + 1];
+    char * tmp = new char[len1 + 2];
     int overflow = 0;
     size_t i = 0;
     for(; i<len2; i++) {
@@ -163,7 +163,7 @@ BigInt add(const char * str1, size_t len1, const char * str2, size_t len2) {
 }
 
 BigInt substract(const char * str1, size_t len1, const char * str2, size_t len2) {
-    char * tmp = new char[len1];
+    char * tmp = new char[len1+2];
     bool borrow = false;
     size_t i = 0;
     for(; i<len2; i++) {
@@ -186,7 +186,7 @@ BigInt substract(const char * str1, size_t len1, const char * str2, size_t len2)
             borrow = 0;
         }
     }
-    tmp[len1] = '\0';
+    tmp[len1+1] = '\0';
     BigInt val(tmp);
     delete[] tmp;
     return val;
@@ -219,7 +219,7 @@ BigInt BigInt::operator*(const BigInt &other) const {
     int overflow = 0;
     size_t baselength = len - minus1 + 1;
     char ** tmp = new char*[other.len - minus2];
-    for(size_t i=0; i<other.len - minus2; i++) tmp[i] = new char[baselength + i];
+    for(size_t i=0; i<other.len - minus2; i++) tmp[i] = new char[baselength + i + 1];
     for(size_t i=0; i<other.len - minus2; i++) {
         for(size_t j = 0; j<i; j++) tmp[i][baselength + i - 1 - j] = '0';
         overflow = 0;
@@ -236,7 +236,6 @@ BigInt BigInt::operator*(const BigInt &other) const {
         mul = mul + BigInt(tmp[i]);
         delete[] tmp[i];
     }
-    
     delete[] tmp;
     if(minus1 xor minus2) return -mul;
     else return mul;
