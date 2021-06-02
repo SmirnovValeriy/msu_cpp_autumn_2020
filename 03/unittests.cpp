@@ -1,9 +1,10 @@
 #include "Matrix.hpp"
 #include <cassert>
 #include <vector>
+#include <iomanip>
 
 /* Creating default matrix */
-bool unittest_1() {
+bool default_matrix() {
     try {
         Matrix matrix(10, 9, 100);
         return true;
@@ -14,8 +15,20 @@ bool unittest_1() {
     }
 }
 
+/* Creating matrix with size (1, 1) */
+bool one_one_matrix() {
+    try {
+        Matrix matrix(1, 1, 0);
+        return (matrix[0][0] == 0) and (matrix[0][0] = 1 == 1);
+    }
+    /* any unknown exception is error */
+    catch(...) {
+        return false;
+    }
+}
+
 /* Checking get_num_rows(), get_num_cols() methods */
-bool unittest_2() {
+bool get_num_row_functions() {
     try {
         Matrix matrix(20, 25, 10);
         size_t rows = matrix.get_num_rows();
@@ -29,7 +42,7 @@ bool unittest_2() {
 }
 
 /* Checking operator[] with proper index */
-bool unittest_3() {
+bool index_operator_correct() {
     try {
         Matrix matrix(15, 15, 2);
         int64_t m_10_10 = matrix[10][10];
@@ -44,7 +57,7 @@ bool unittest_3() {
 }
 
 /* Checking operator[] with improper row index */
-bool unittest_4() {
+bool index_operator_incorrect_row() {
     try {
         Matrix matrix(15, 15, 2);
         int64_t m_10_10 = matrix[15][10];
@@ -62,7 +75,7 @@ bool unittest_4() {
 }
 
 /* Checking operator[] with improper column index */
-bool unittest_5() {
+bool index_operator_incorrect_col() {
     try {
         Matrix matrix(7, 7, 4);
         int64_t m_10_10 = matrix[3][10];
@@ -80,7 +93,7 @@ bool unittest_5() {
 }
 
 /* Checking operator == */
-bool unittest_6() {
+bool equality_operator() {
     try {
         Matrix matrix_1(10, 10, 2);
         /* Equal matrix */
@@ -98,7 +111,7 @@ bool unittest_6() {
 }
 
 /* Checking operator *= */
-bool unittest_7() {
+bool mul_assign_operator() {
     try {
         Matrix matrix_1(13, 12, 2);
         return (matrix_1 *= 17) == Matrix(13, 12, 34);
@@ -110,7 +123,7 @@ bool unittest_7() {
 }
 
 /* Checking operator + with proper matrices sizes*/
-bool unittest_8() {
+bool sum_correct_sizes() {
     try {
         Matrix matrix_1(30, 32, 4);
         Matrix matrix_2(30, 32, 6);
@@ -124,7 +137,7 @@ bool unittest_8() {
 }
 
 /* Checking operator + with inequal row sizes*/
-bool unittest_9() {
+bool sum_incorrect_sizes_row() {
     try {
         Matrix matrix_1(30, 32, 4);
         Matrix matrix_2(32, 32, 6);
@@ -143,7 +156,7 @@ bool unittest_9() {
 }
 
 /* Checking operator + with inequal column sizes*/
-bool unittest_10() {
+bool sum_incorrect_sizes_col() {
     try {
         Matrix matrix_1(30, 32, 4);
         Matrix matrix_2(30, 28, 6);
@@ -162,7 +175,7 @@ bool unittest_10() {
 }
 
 /* Checking operator = with proper matrices sizes*/
-bool unittest_11() {
+bool assign_correct_sizes() {
     try {
         Matrix matrix_1(30, 32, 4);
         Matrix matrix_2(30, 32, 6);
@@ -178,7 +191,7 @@ bool unittest_11() {
 }
 
 /* Checking operator = with inequal row sizes*/
-bool unittest_12() {
+bool assign_incorrect_sizes_row() {
     try {
         Matrix matrix_1(30, 32, 4);
         Matrix matrix_2(32, 32, 6);
@@ -197,7 +210,7 @@ bool unittest_12() {
 }
 
 /* Checking operator + with inequal column sizes*/
-bool unittest_13() {
+bool assign_incorrect_sizes_col() {
     try {
         Matrix matrix_1(30, 32, 4);
         Matrix matrix_2(30, 28, 6);
@@ -216,7 +229,7 @@ bool unittest_13() {
 }
 
 /* Checking operator [] for const instances: read element */
-bool unittest_14() {
+bool index_operator_const() {
     try {
         const Matrix matrix_1(5, 5, 10);
         return matrix_1[0][0] == 10;
@@ -228,7 +241,7 @@ bool unittest_14() {
 }
 
 /* Checking operator != */
-bool unittest_15() {
+bool inequality_operator() {
     try {
         Matrix matrix_1(10, 10, 2);
         /* Equal matrix */
@@ -246,21 +259,38 @@ bool unittest_15() {
 }
 
 int main() {
-    std::cout<<"Unittest_1 "<<(unittest_1() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_2 "<<(unittest_2() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_3 "<<(unittest_3() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_4 "<<(unittest_4() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_5 "<<(unittest_5() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_6 "<<(unittest_6() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_7 "<<(unittest_7() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_8 "<<(unittest_8() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_9 "<<(unittest_9() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_10 "<<(unittest_10() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_11 "<<(unittest_11() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_12 "<<(unittest_12() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_13 "<<(unittest_13() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_14 "<<(unittest_14() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest_15 "<<(unittest_15() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest default_matrix"<<(default_matrix() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest one_one_matrix"<<(one_one_matrix() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest get_num_row_functions"<<(get_num_row_functions() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest index_operator_correct "<<(index_operator_correct() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest index_operator_incorrect_row "<<(index_operator_incorrect_row() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest index_operator_incorrect_col "<<(index_operator_incorrect_col() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest equality_operator "<<(equality_operator() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest mul_assign_operator "<<(mul_assign_operator() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest sum_correct_sizes "<<(sum_correct_sizes() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest sum_incorrect_sizes_row "<<(sum_incorrect_sizes_row() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest sum_incorrect_sizes_col "<<(sum_incorrect_sizes_col() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest assign_correct_sizes "<<(assign_correct_sizes() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest assign_incorrect_sizes_row "<<(assign_incorrect_sizes_row() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest assign_incorrect_sizes_col "<<(assign_incorrect_sizes_col() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest index_operator_const "<<(index_operator_const() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest inequality_operator "<<(inequality_operator() ? "OK" : "ERROR")<<std::endl;
     return 0;
 }
 

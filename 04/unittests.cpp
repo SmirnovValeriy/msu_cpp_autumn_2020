@@ -199,18 +199,32 @@ bool comparison_operators() {
 }
 
 int main() {
-    std::cout<<"Unittest BigInt_from_string "<<(BigInt_from_string() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest BigInt_from_int64 "<<(BigInt_from_int64() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest copying_moving_constructors "<<(copying_moving_constructors() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest assignment_operators "<<(assignment_operators() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest meaningless_zeros "<<(meaningless_zeros() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest unary_minus "<<(unary_minus() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest positive_positive_sum "<<(positive_positive_sum() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest positive_positive_diff "<<(positive_positive_diff() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest negative_negative_sum "<<(negative_negative_sum() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest negative_negative_diff "<<(negative_negative_diff() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest positive_positive_mul "<<(positive_positive_mul() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest positive_negative_mul "<<(positive_negative_mul() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest negative_negative_mul "<<(negative_negative_mul() ? "OK" : "ERROR")<<std::endl;
-    std::cout<<"Unittest comparison_operators "<<(comparison_operators() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest BigInt_from_string "<<(BigInt_from_string() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest BigInt_from_int64 "<<(BigInt_from_int64() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest copying_moving_constructors "<<(copying_moving_constructors() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest assignment_operators "<<(assignment_operators() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest meaningless_zeros "<<(meaningless_zeros() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest unary_minus "<<(unary_minus() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest positive_positive_sum "<<(positive_positive_sum() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest positive_positive_diff "<<(positive_positive_diff() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest negative_negative_sum "<<(negative_negative_sum() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest negative_negative_diff "<<(negative_negative_diff() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest positive_positive_mul "<<(positive_positive_mul() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest positive_negative_mul "<<(positive_negative_mul() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest negative_negative_mul "<<(negative_negative_mul() ? "OK" : "ERROR")<<std::endl;
+    std::cout.width(44);
+    std::cout<<std::left<<"Unittest comparison_operators "<<(comparison_operators() ? "OK" : "ERROR")<<std::endl;
 }
