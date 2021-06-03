@@ -198,6 +198,7 @@ bool comparison_operators() {
     }
 }
 
+
 int main() {
     std::cout.width(44);
     std::cout<<std::left<<"Unittest BigInt_from_string "<<(BigInt_from_string() ? "OK" : "ERROR")<<std::endl;

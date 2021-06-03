@@ -1,5 +1,6 @@
 #include "BigInt.hpp"
 
+
 BigInt::BigInt(): len(1), data(new char[len+1]) {
     data[0] = '0';
     data[1] = '\0';
